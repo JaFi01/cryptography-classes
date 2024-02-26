@@ -24,12 +24,11 @@ def ceasar_brute_force(ciphertext: str):
     
     for shift in range(1, ALPHABET_SIZE):
         decrypted_text = ''
-        valid_count = 0
         
         for char in ciphertext:
-            if(char.isupper):
+            if(char.isupper()):
                 char = ord(char) + 32
-            if (char.islower):
+            if char.islower():
                 position = ord(char) - ord('a')
                 new_position = (position - shift) % ALPHABET_SIZE
                 decrypted_text += chr(new_position + ord('a'))
@@ -38,6 +37,7 @@ def ceasar_brute_force(ciphertext: str):
         
         decrypted_text_tokens = word_tokenize(decrypted_text)
         
+        valid_count = 0
         for token in decrypted_text_tokens:
             if check_word_sense(token):
                 valid_count += 1
@@ -48,19 +48,10 @@ def ceasar_brute_force(ciphertext: str):
             best_decrypted_text = decrypted_text_tokens
     
     if best_shift is not None:
-        print(f"Decrypted sentence: {' '.join(best_decrypted_text)} Most propable shift {best_shift}")
+        return ' '.join(best_decrypted_text)
     else:
-        print(f"This sentence can't be decrypted:{ciphertext}. Can't find human readable words")
+        return None
 
-#Test calls
-ciphertext = "gur dhvpx oebja sbk whzcf bire gur ynml qbtf"
-ceasar_brute_force(ciphertext)
-ciphertext = "aopz pz qbza h zlualujl"
-ceasar_brute_force(ciphertext)
-ciphertext = "dvyk ovtl uvalivvr"
-ciphertext = "dwqevyk ovwerrwtl uvalwivvr"
-ceasar_brute_force(ciphertext)
 
 #pip install nltk
 # TODO: add nltk to requirements.txt
-# TODO: separate unit test file
