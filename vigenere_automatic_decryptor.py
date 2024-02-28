@@ -1,15 +1,6 @@
 import nltk
 from nltk.tokenize import word_tokenize
-from nltk.corpus import wordnet
-
-#nltk.download()
-
-def check_word_sense(word: str):
-    if wordnet.synsets(word):
-        return True
-    else:
-        return False
-
+from caesar_automatic_decryptor import check_word_sense
 
 def vigenere_brute_force(ciphertext: str):
     """Brutforce through ciphertext, and counting valid words in each decryption iteration
@@ -61,9 +52,12 @@ def vigenere_brute_force(ciphertext: str):
                     max_valid_count = valid_count
                     best_shift = (shift1, shift2, shift3)
                     best_decrypted_text = decrypted_text_tokens
-                    print (decrypted_text_tokens, valid_count, best_shift)
+                    #print (decrypted_text_tokens, valid_count, best_shift)
             
     if best_shift is not None:
         return ' '.join(best_decrypted_text)
     else:
         return None
+sentence = "ghhf ir wurg ambtgrr srss"
+result = vigenere_brute_force(sentence)
+print (result)
