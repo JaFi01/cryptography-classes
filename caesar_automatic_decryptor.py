@@ -16,13 +16,16 @@ def ceasar_brute_force(ciphertext: str):
 
     Args:
         ciphertext (str): encrypted sentence or words in english
+
+    Returns:
+        str: most propable decrypted sentence (most of words after decryption exists)
     """
     ALPHABET_SIZE = 26
     max_valid_count = 0
     best_shift = None
     best_decrypted_text = None
     
-    for shift in range(1, ALPHABET_SIZE):
+    for shift in range(0, ALPHABET_SIZE):
         decrypted_text = ''
         
         for char in ciphertext:
@@ -51,7 +54,6 @@ def ceasar_brute_force(ciphertext: str):
         return ' '.join(best_decrypted_text)
     else:
         return None
-
 
 #pip install nltk
 # TODO: add nltk to requirements.txt

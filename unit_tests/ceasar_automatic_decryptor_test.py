@@ -1,5 +1,5 @@
 import unittest
-from cesar_automatic_decryptor import ceasar_brute_force
+from caesar_automatic_decryptor import ceasar_brute_force
 
 class TestCeasarAutomaticDecryptor(unittest.TestCase):
 
@@ -24,3 +24,4 @@ class TestCeasarAutomaticDecryptor(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+#python3 -m unittest unit_tests.cesar_automatic_decryptor_test in Linux terminal
